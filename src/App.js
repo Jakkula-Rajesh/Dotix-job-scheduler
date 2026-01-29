@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import './App.css';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const apiBase = process.env.REACT_APP_API_BASE || 'http://localhost:4000/api';
 
-  const fetchJobs = async () => {
+  const fetchJobs = useCallback(async () => {
     try {
       const res = await fetch(`${apiBase}/jobs`);
       const data = await res.json();
@@ -17,11 +17,11 @@ function App() {
     } catch (err) {
       console.error(err);
     }
-  };
+  }, [apiBase]);
 
   useEffect(() => {
     fetchJobs();
-  }, []);
+  }, [fetchJobs]);
 
   const createJob = async (e) => {
     e.preventDefault();
