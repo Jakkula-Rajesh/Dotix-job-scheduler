@@ -1,3 +1,29 @@
+# Dotix Job Scheduler (Local Demo)
+
+This workspace contains a React frontend (Create React App) and a simple Express + SQLite backend. It implements a mini job scheduler where you can create jobs, run them (simulated), and trigger an outbound webhook when jobs complete.
+
+Quick start (two terminals):
+
+1. Backend
+
+```bash
+cd backend
+npm install
+# optionally create .env and set WEBHOOK_URL to your webhook.site URL
+npm start
+```
+
+2. Frontend
+
+```bash
+# from repo root
+npm install
+npm start
+```
+
+Frontend expects backend at `http://localhost:4000/api`. To change, set `REACT_APP_API_BASE` in `.env` in the root.
+
+Webhook testing: use https://webhook.site to generate a test URL and set `WEBHOOK_URL` in `backend/.env` or your environment.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
